@@ -16,6 +16,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    # 下記、合っているか不明　5章参照
+    @books = @user.books.reverse_order
   end
 
   def destroy
@@ -29,5 +32,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-
 end
