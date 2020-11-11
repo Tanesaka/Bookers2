@@ -1,0 +1,14 @@
+<div class="profile-container">
+  <h3 class="profile-name"><%= @user.name %></h3>
+  <!--投稿ユーザー画像入れるとこ　5章参照-->
+</div>
+
+<% @books.each do |book| %>
+<div>
+<!--投稿ユーザー画像入れるとこ　5章参照-->
+  <p><%= book.user.name %></p>
+  <p><%= book.title %></p>
+  <p><%= book.body %></p>
+    <%= link_to "削除", book_path(@book), method: :delete %>
+</div>
+<% end %>
