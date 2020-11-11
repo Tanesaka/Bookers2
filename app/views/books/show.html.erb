@@ -9,6 +9,6 @@
   <p><%= book.user.name %></p>
   <p><%= book.title %></p>
   <p><%= book.body %></p>
-    <%= link_to "削除", book_path(@book.id), method: :delete %>
+    <%= link_to "削除", book_path(@book), method: :delete %>
 </div>
 <% end %>
