@@ -1,18 +1,44 @@
 <!--マイページ　編集、削除ボタンとかはなし。-->
+<div class='row'>
+<div class='col-md-3'>
+<%= render 'books/book', book: @newbook, user: @user %>
+</div>
+</div>
 
-<!--ここから-->
+
+<div class='row'>
+<div class='col-md-8'>
+
 <h1>Books</h1>
-<div class="profile-container">
-  <h3 class="profile-name"><%= @user.name %></h3>
-<!--投稿ユーザー画像入れるとこ　5章参照-->
-</div>
-<!--ここまでいらん-->
 
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+</thead>
+
+<tbody>
 <% @books.each do |book| %>
-<div>
-<!--投稿ユーザー画像入れるとこ　5章参照-->
-  <p><%= book.user.name %></p>
-  <p><%= book.title %></p>
-  <p><%= book.body %></p>
-</div>
+<tr>
+<td>
+<%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "images/no_image.jpg" %>
+</td>
+  <td><%= book.user.name %></td>
+<td>
+  <%= link_to book_path(book.id) do %>
+  <%= book.title %>
+  <% end %></td>
+
+  <td><%= book.body %></td>
+
+  </tr>
 <% end %>
+</tbody>
+</table>
+
+</div>
+</div>

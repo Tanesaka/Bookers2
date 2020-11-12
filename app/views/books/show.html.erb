@@ -1,17 +1,43 @@
 <!--<!-詳細ページ　1つのタイトルだけ。削除、編集もつける--->
 
+<div class='row'>
+<div class='col-md-3'>
+<%= render 'books/book', book: @newbook, user: @user %>
+</div>
+</div>
 
-<!--Showの@bookで1つを指定しているため、Newのフォームに入ってしまう。-->
-<%= render 'books/book', book: @book, user: @user %>
+<div class='row'>
+<div class='col-md-8'>
 
-
-<div class="post-body">
+<h1>Book detail</h1>
+<table class="table table-striped">
 <!--投稿ユーザー画像入れるとこ　5章参照-->
-  <p><%= @book.user.name %></p>
-  <p><%= @book.title %></p>
-  <p><%= @book.body %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
-    <%= link_to "編集", edit_book_path(@book) %>
+<thead>
+    <tr>
+      <th colspan="5"></th>
+    </tr>
+</thead>
+
+ <tbody><tr>
+  <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "images/no_image.jpg" %>
+    <%= link_to user_path(@user.id) do %>
+    <%= @book.user.name %>
     <% end %>
+    </td>
+
+  <td><%= link_to book_path(@book.id) do %>
+  <%= @book.title %>
+  <% end %>
+  </td>
+
+  <td><%= @book.body %></td>
+  <% if @book.user == current_user %>
+  <td><%= link_to "削除", book_path(@book), method: :delete %> </td>
+  <td><%= link_to "編集", edit_book_path(@book) %> </td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>
+
+</div>
 </div>
