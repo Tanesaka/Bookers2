@@ -1,11 +1,17 @@
+<!--<!-詳細ページ　1つのタイトルだけ。削除、編集もつける--->
 
 
-<% @books.each do |book| %>
-<div>
+<!--Showの@bookで1つを指定しているため、Newのフォームに入ってしまう。-->
+<%= render 'books/book', book: @book, user: @user %>
+
+
+<div class="post-body">
 <!--投稿ユーザー画像入れるとこ　5章参照-->
-  <p><%= book.user.name %></p>
-  <p><%= book.title %></p>
-  <p><%= book.body %></p>
+  <p><%= @book.user.name %></p>
+  <p><%= @book.title %></p>
+  <p><%= @book.body %></p>
+  <% if @book.user == current_user %>
     <%= link_to "削除", book_path(@book), method: :delete %>
+    <%= link_to "編集", edit_book_path(@book) %>
+    <% end %>
 </div>
-<% end %>

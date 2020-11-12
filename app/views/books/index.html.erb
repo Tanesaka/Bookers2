@@ -1,17 +1,20 @@
-<h1>画像投稿フォーム</h1>
-<%= form_with model: @book, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  <%= f.submit '投稿' %>
-<% end %>
 
+
+<%= render partial: "books/book", locals:{ book: @book, user: @user }%>
 
 <% @books.each do |book| %>
 <div>
 <!--投稿ユーザー画像　3章参照-->
-  <p>Title：<%= book.title %></p>
+
+<!--ここは後ほど名前からユーザー画像に変更する-->
+
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "images/no_image.jpg" %>
+
+ <p>Title：
+<%= link_to book_path(book.id) do %>
+ <%= book.title %></p>
+  <% end %>
+
   <p>Opinion：<%= book.body %></p>
 </div>
 <% end %>
