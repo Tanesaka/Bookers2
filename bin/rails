@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 begin
+  # 下記になにかある？
   load File.expand_path('../spring', __FILE__)
 rescue LoadError => e
   raise unless e.message.include?('spring')

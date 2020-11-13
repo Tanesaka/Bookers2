@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'books#top'
   resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update, :top]
   resources :users, only: [:show, :index, :edit, :update]
+  resources :homes, only: [:index]
+
 end

@@ -2,15 +2,28 @@
 
 <h1>User info</h1>
 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "images/no_image.jpg" %>
+<hr>
 <div class="profile-container">
   <!--ログイン中のユーザー名を表示させたい　※下記のUserは小文字のはず。-->
 <p>name</p>
-<h3 class="profile-name"><%= user.name %></h3>
-
+<p class="profile-name"><%= user.name %></p>
+<hr>
 <p>introduction</p>
-<h3 class="profile-name"><%= user.introduction %></h3>
+<p class="text-justify"><%= user.introduction %></p>
 
- <%= link_to "Edit User", edit_user_path(@user) %>
+
+<% if @user == current_user %>
+　<%= link_to edit_user_path(@user), class:"btn btn-lg btn-block btn-info mt-4" do %>
+　<i class="fas fa-user-cog"></i>
+　<% end %>
+
+　<% else %>
+　<%= link_to user_path(current_user), class:"btn btn-lg btn-block btn-info mt-4" do %>
+　<i class="fas fa-user-cog"></i>
+　<% end %>
+
+<% end %>
+
 
 <!--新規投稿-->
 <h1>New book</h1>
@@ -19,6 +32,8 @@
   <%= f.text_field :title %>
   <h4>Opinion</h4>
   <%= f.text_area :body %>
+  <br>
   <%= f.submit 'Create Book' %>
+
 <% end %>
 
