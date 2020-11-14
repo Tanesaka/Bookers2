@@ -1,5 +1,10 @@
 <!--<!-詳細ページ　1つのタイトルだけ。削除、編集もつける--->
 
+<div class="container">
+<p class="text-success">
+<%= notice %>
+</p>
+
 <div class='row'>
 <div class='col-md-3'>
 <%= render 'books/book', book: @newbook, user: @user %>
@@ -33,11 +38,12 @@
   <td><%= @book.body %></td>
   <% if @book.user == current_user %>
   <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-lg btn-block btn-info mt-4" %> </td>
-  <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-lg btn-block btn-info mt-4" %> </td>
+  <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-lg btn-block btn-info mt-4" %> </td>
     </tr>
     <% end %>
     </tbody>
 </table>
 
+</div>
 </div>
 </div>

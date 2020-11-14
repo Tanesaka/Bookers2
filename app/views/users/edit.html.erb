@@ -5,6 +5,8 @@
 <h2 class="text-dark bg-light p-4 mb-0">User info</h2>
 <div class="form-body p-4">
 
+  <%= render partial: "layouts/error_user", model: @user %>
+
 <%= form_with model:@user, local:true do |f| %>
   <div>
   <label for="inputName">Name</label>
