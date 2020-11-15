@@ -1,14 +1,15 @@
 <div class="container">
 <%= render partial: "layouts/error_book", model: @book %>
 
+
 <div class='row'>
 <div class='col-md-3'>
 <%= render partial: "books/book", locals:{ book: @book, user: @user }%>
 </div>
-</div>
 
-<div class='row'>
-<div class='col-md-8'>
+
+
+<div class='col-md-8 offset-md-1'>
 
 <h1>Books</h1>
 <table class="table table-striped">
