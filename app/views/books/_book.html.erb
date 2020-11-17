@@ -12,17 +12,12 @@
 <p class="text-justify"><%= user.introduction %></p>
 
 
-<% if @user == current_user %>
+
 　<%= link_to edit_user_path(@user), class:"btn btn-lg btn-block btn-info mt-4" do %>
 　<i class="fas fa-user-cog"></i>
 　<% end %>
 
-　<% else %>
-　<%= link_to user_path(current_user), class:"btn btn-lg btn-block btn-info mt-4" do %>
-　<i class="fas fa-user-cog"></i>
-　<% end %>
 
-<% end %>
 </div>
 
 <!--新規投稿-->

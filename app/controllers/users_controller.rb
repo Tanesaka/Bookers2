@@ -15,6 +15,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+        # 11/17追記
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
+# ここまで
   end
 
   def update
